@@ -1,28 +1,31 @@
 ﻿@page "/"
 @namespace BlazorBffAzureAD.Pages
+@using System.Net;
+@using NetEscapades.AspNetCore.SecurityHeaders;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IHostEnvironment hostEnvironment
+@inject IConfiguration config
 @{
     Layout = null;
+
+    var source = "";
+    if (hostEnvironment.IsDevelopment())
+    {
+        var httpClient = new HttpClient();
+        source = await httpClient.GetStringAsync($"{config["UiDevServerUrl"]}/index.html");
+    }
+    else
+    {
+        source = System.IO.File.ReadAllText($"{System.IO.Directory.GetCurrentDirectory()}{@"/wwwroot/index.html"}");
+    }
+
+    var nonce = HttpContext.GetNonce();
+
+    // The nonce is passed to the client through the HTML to avoid sync issues between tabs
+    source = source.Replace("**PLACEHOLDER_NONCE_SERVER**", nonce);
+
+    // TODO
+    // add CRSF protection
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Blazor AAD Cookie</title>
-    <base href="~/" />
-    <link href="manifest.json" rel="manifest" />
-    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
-    <link rel="stylesheet" href="styles.ef46db3751d8e999.css">
-</head>
-<body>
-
-    <app-root></app-root>
-    <script src="runtime.37059233034b21c2.js" type="module"></script>
-    <script src="polyfills.3a598513346f0557.js" type="module"></script>
-    <script src="main.24867ec0952a6d92.js" type="module"></script>
-
-
-</body>
-</html>
+@Html.Raw(source)
