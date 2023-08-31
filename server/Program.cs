@@ -48,6 +48,9 @@ services.AddRazorPages().AddMvcOptions(options =>
     //options.Filters.Add(new AuthorizeFilter(policy));
 }).AddMicrosoftIdentityUI();
 
+builder.Services.AddReverseProxy()
+   .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
 var app = builder.Build();
 
 if (env.IsDevelopment())
@@ -79,6 +82,16 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapNotFound("/api/{**segment}");
+
+if (app.Environment.IsDevelopment())
+{
+    var uiDevServer = app.Configuration.GetValue<string>("UiDevServerUrl");
+    if (!string.IsNullOrEmpty(uiDevServer))
+    {
+        app.MapReverseProxy();
+    }
+}
+
 app.MapFallbackToPage("/_Host");
 
 app.Run();
