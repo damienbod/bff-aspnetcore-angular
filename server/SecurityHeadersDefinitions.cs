@@ -24,18 +24,13 @@ public static class SecurityHeadersDefinitions
                 builder.AddImgSrc().Self().From("data:");
                 builder.AddFormAction().Self().From(idpHost);
                 builder.AddFontSrc().Self();
-                builder.AddStyleSrc().Self();
                 builder.AddBaseUri().Self();
                 builder.AddFrameAncestors().None();
 
-                // due to Blazor
-                builder.AddScriptSrc()
-                    .Self()
-                    .WithHash256("v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=")
-                    .UnsafeEval();
-
-                // disable script and style CSP protection if using Blazor hot reload
-                // if using hot reload, DO NOT deploy with an insecure CSP
+                builder.AddStyleSrc().Self().UnsafeInline();
+                //builder.AddScriptSrc().Self().UnsafeInline();
+                //builder.AddStyleSrc().Self().WithNonce();
+                builder.AddScriptSrc().Self().WithNonce();
             })
             .RemoveServerHeader()
             .AddPermissionsPolicy(builder =>

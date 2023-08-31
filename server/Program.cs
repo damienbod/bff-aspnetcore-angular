@@ -63,10 +63,9 @@ else
     app.UseExceptionHandler("/Error");
 }
 
-// fix for angular
-//app.UseSecurityHeaders(
-//    SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-//        configuration["AzureAd:Instance"]));
+app.UseSecurityHeaders(
+    SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
+        configuration["AzureAd:Instance"]));
 
 app.UseHttpsRedirection();
 
