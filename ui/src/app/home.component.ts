@@ -24,13 +24,4 @@ export class HomeComponent implements OnInit {
     //  .get('https://localhost:5001/api/DirectApi')
     //  .pipe(catchError((error) => of(error)));
   }
-  login() {
-    this.httpClient.get('https://localhost:5001/api/account/Login')
-      .subscribe((result) => console.log(result));
-  }
-
-  logout() {
-    this.httpClient.post('https://localhost:5001/api/account/Logout', "")
-      .subscribe((result) => console.log(result));
-  }
 }

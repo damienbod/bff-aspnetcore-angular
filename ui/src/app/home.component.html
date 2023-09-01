@@ -2,8 +2,10 @@
 
 <hr/>
 
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
+<a class="btn btn-link" href="api/Account/Login">Log in</a>
+<form method="post" action="api/Account/Logout">
+  <button class="btn btn-link" type="submit">Sign out</button>
+</form>
 <button (click)="callApi()">Call API</button>
 
 <h2>API data:</h2>
