@@ -13,6 +13,7 @@ import { CommonModule } from "@angular/common";
 })
 export class HomeComponent implements OnInit {
   dataFromAzureProtectedApi$: Observable<any>;
+  dataGraphApiCalls$: Observable<any>;
   userProfileClaims: any;
   isAuthenticated = false;
   constructor(
@@ -35,12 +36,19 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  callApi() {
+  getDirectApiData() {
     this.dataFromAzureProtectedApi$ = this.httpClient
       .get(`${this.getCurrentHost()}/api/DirectApi`)
       .pipe(catchError((error) => of(error)));
   }
 
+  getGraphApiDataUsingApi() {
+    this.dataGraphApiCalls$ = this.httpClient
+      .get(`${this.getCurrentHost()}/api/GraphApiData`)
+      .pipe(catchError((error) => of(error)));
+  }
+
+  
   private getCurrentHost() {
     const host = window.location.host;
     const url = `${window.location.protocol}//${host}`;

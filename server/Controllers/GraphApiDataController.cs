@@ -11,11 +11,11 @@ namespace BffAzureAD.Server.Controllers;
 [AuthorizeForScopes(Scopes = new string[] { "User.ReadBasic.All user.read" })]
 [ApiController]
 [Route("api/[controller]")]
-public class GraphApiCallsController : ControllerBase
+public class GraphApiDataController : ControllerBase
 {
     private readonly MsGraphService _graphApiClientService;
 
-    public GraphApiCallsController(MsGraphService graphApiClientService)
+    public GraphApiDataController(MsGraphService graphApiClientService)
     {
         _graphApiClientService = graphApiClientService;
     }
