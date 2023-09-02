@@ -9,33 +9,35 @@ on:
   pull_request:
     branches: [ "main" ]
 
-defaults:
-  run:
-    shell: bash
-    working-directory: ui
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-node@v1
-      - name: npm install nx
-        run: npm install nx@latest
-
-      - name: npm setup
-        run: npm install
-
-      - name: ui-nx-build
-        run: npm build ui
 
       - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.x
+
       - name: Restore dependencies
         run: dotnet restore
+
+      - uses: actions/setup-node@v1
+      - name: npm install nx
+        working-directory: ui
+        run: npm install nx@latest
+
+      - name: npm setup
+        working-directory: ui
+        run: npm install
+
+      - name: ui-nx-build
+        working-directory: ui
+        run: npm build ui
+
+
       - name: Build
         run: dotnet build --no-restore
       - name: Test
