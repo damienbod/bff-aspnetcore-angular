@@ -88,7 +88,48 @@ Use the Web client type on setup.
 
 ## github actions build
 
+```yaml
+
+name: .NET and npm build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: npm setup
+        working-directory: ui
+        run: npm install
+
+      - name: ui-nx-build
+        working-directory: ui
+        run: npm run build
+
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+```
+
 ## github actions Azure deployment
+
+See **azure-webapps-dotnet-core.yml**
 
 ## Links
 

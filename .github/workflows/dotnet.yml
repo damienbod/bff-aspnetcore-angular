@@ -1,7 +1,5 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: .NET and npm build
 
 on:
   push:
@@ -32,12 +30,7 @@ jobs:
         working-directory: ui
         run: npm run build
 
-
       - name: Build
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal
-
-
-
-
