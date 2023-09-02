@@ -1,4 +1,4 @@
-<div>Security architecture BFF with Angular nx</div>
+<h2>BFF Security architecture with Angular nx</h2>
 
 <div *ngIf="isAuthenticated; else noAuth">
   <button (click)="callApi()">Call API</button>
@@ -8,7 +8,6 @@
 </div>
 
 <ng-template #noAuth>
-  <br />
   <a class="btn btn-link" href="api/Account/Login">Log in</a>
 </ng-template>
 
@@ -18,6 +17,8 @@ Is authenticated: {{ isAuthenticated }}
 
 <h2>User profile:</h2>
 <pre>{{ userProfileClaims | json }}</pre>
+
+<hr />
 
 <h2>API data:</h2>
 <pre>

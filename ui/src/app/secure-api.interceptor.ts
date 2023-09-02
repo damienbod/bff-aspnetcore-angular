@@ -4,7 +4,7 @@ import { getCookie } from "./getCookie";
 
 @Injectable()
 export class SecureApiInterceptor implements HttpInterceptor {
-  private secureRoutes = ['https://localhost:5001'];
+  private secureRoutes = [ this.getApiUrl()];
 
   intercept(
     request: HttpRequest<any>,
@@ -20,5 +20,17 @@ export class SecureApiInterceptor implements HttpInterceptor {
     });
 
     return next.handle(request);
+  }
+
+  public getApiUrl() {
+    const backendHost = this.getCurrentHost();
+
+    return `${backendHost}/api/`;
+  }
+
+  public getCurrentHost() {
+    const host = window.location.host;
+    const url = `${window.location.protocol}//${host}`;
+    return url;
   }
 }
