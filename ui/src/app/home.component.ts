@@ -25,14 +25,13 @@ export class HomeComponent implements OnInit {
   }
 
   getUserProfile() {
-    let data: any = this.httpClient
+    this.httpClient
       .get(`${this.getCurrentHost()}/api/User`)
-      .subscribe((result) => {
-        data = result;
+      .subscribe((result: any) => {
         console.log(result);
 
-        if(data.isAuthenticated) this.isAuthenticated = true;
-        this.userProfileClaims = data;
+        if(result.isAuthenticated) this.isAuthenticated = true;
+        this.userProfileClaims = result;
       });
   }
 
@@ -42,7 +41,7 @@ export class HomeComponent implements OnInit {
       .pipe(catchError((error) => of(error)));
   }
 
-  public getCurrentHost() {
+  private getCurrentHost() {
     const host = window.location.host;
     const url = `${window.location.protocol}//${host}`;
     return url;
