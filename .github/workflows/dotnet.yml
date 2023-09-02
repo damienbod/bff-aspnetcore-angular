@@ -24,11 +24,6 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - uses: actions/setup-node@v1
-      - name: npm install nx
-        working-directory: ui
-        run: npm install nx@latest
-
       - name: npm setup
         working-directory: ui
         run: npm install
