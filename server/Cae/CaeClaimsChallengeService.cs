@@ -1,4 +1,4 @@
-﻿namespace BlazorBffAzureAD.Server;
+﻿namespace BffAzureAD.Server;
 
 /// <summary>
 /// Claims challenges, claims requests, and client capabilities

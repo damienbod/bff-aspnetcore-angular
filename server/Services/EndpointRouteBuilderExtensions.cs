@@ -1,4 +1,4 @@
-namespace BlazorBffAzureAD.Server.Services;
+namespace BffAzureAD.Server.Services;
 
 public static class EndpointRouteBuilderExtensions
 {

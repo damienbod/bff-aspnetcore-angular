@@ -1,4 +1,4 @@
-﻿namespace BlazorBffAzureAD.Server;
+﻿namespace BffAzureAD.Server;
 
 /// <summary>
 /// Consts used for the defined AuthContext. The AuthContext can be created using MS Graph.

@@ -3,7 +3,7 @@ using Microsoft.Graph.Models;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BlazorBffAzureAD.Server.Services
+namespace BffAzureAD.Server.Services
 {
     public class MsGraphService
     {

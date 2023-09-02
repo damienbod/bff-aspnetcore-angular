@@ -1,4 +1,4 @@
-﻿namespace BlazorBffAzureAD.Server;
+﻿namespace BffAzureAD.Server;
 
 public static class SecurityHeadersDefinitions
 {

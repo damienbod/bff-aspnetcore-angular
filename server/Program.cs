@@ -1,5 +1,5 @@
-﻿using BlazorBffAzureAD.Server;
-using BlazorBffAzureAD.Server.Services;
+﻿using BffAzureAD.Server;
+using BffAzureAD.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;

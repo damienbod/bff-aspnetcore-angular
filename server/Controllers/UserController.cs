@@ -1,4 +1,4 @@
-﻿using BlazorBffAzureAD.Server.Models;
+﻿using BffAzureAD.Server.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

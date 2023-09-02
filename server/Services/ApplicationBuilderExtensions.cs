@@ -1,6 +1,6 @@
 using Microsoft.Net.Http.Headers;
 
-namespace BlazorBffAzureAD.Server.Services;
+namespace BffAzureAD.Server.Services;
 
 public static class ApplicationBuilderExtensions
 {

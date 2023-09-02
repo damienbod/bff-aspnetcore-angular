@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorBffAzureAD.Server", "server\BlazorBffAzureAD.Server.csproj", "{586272BB-19BC-4BAB-976F-5DC1E778257E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BffAzureAD.Server", "server\BffAzureAD.Server.csproj", "{586272BB-19BC-4BAB-976F-5DC1E778257E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9D8FB767-F7A7-4A5B-A4E9-DC6DB6BCD941}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

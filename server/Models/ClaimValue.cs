@@ -1,4 +1,4 @@
-﻿namespace BlazorBffAzureAD.Server.Models;
+﻿namespace BffAzureAD.Server.Models;
 
 public class ClaimValue
 {
