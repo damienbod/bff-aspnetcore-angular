@@ -89,3 +89,7 @@ Use the Web client type on setup.
 ## github actions build
 
 ## github actions Azure deployment
+
+## Links
+
+bff-angular-aspnetcore.azurewebsites.net
