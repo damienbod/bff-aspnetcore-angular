@@ -12,8 +12,6 @@
 </ng-template>
 
 <hr />
-<br />
-Is authenticated: {{ isAuthenticated }}
 
 <h2>User profile:</h2>
 <pre>{{ userProfileClaims | json }}</pre>
@@ -21,6 +19,4 @@ Is authenticated: {{ isAuthenticated }}
 <hr />
 
 <h2>API data:</h2>
-<pre>
-  {{ dataFromAzureProtectedApi$ | async | json }}
-</pre>
+<pre>{{ dataFromAzureProtectedApi$ | async | json }}</pre>
