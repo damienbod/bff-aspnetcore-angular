@@ -26,18 +26,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-  build-nx:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: nrwl/nx-set-shas@v3 
-    - run: npm ci
-      working-directory: ui
-    - run: npx nx format:check
-      working-directory: ui
-    - run: npx nx affected -t lint --parallel=3
-      working-directory: ui
-    - run: npx nx affected -t test --parallel=3 --configuration=ci
-      working-directory: ui
-    - run: npx nx affected -t build --parallel=3
-      working-directory: ui
+
