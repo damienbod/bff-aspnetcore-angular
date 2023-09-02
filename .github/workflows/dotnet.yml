@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ui
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,15 +21,12 @@ jobs:
     steps:
       - uses: actions/setup-node@v1
       - name: npm install nx
-        working-directory: ui
         run: npm install nx@latest
 
       - name: npm setup
-        working-directory: ui
         run: npm install
 
       - name: ui-nx-build
-        working-directory: ui
         run: npm build ui
 
       - uses: actions/checkout@v3
