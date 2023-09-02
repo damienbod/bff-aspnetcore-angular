@@ -31,6 +31,7 @@ public class AccountController : ControllerBase
     }
 
     // [ValidateAntiForgeryToken] // not needed explicitly due the the Auto global definition.
+    [IgnoreAntiforgeryToken] // need to apply this to the form post request
     [Authorize]
     [HttpPost("Logout")]
     public IActionResult Logout()
