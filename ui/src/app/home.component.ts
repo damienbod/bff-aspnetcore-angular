@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   getUserProfile() {
     let data: any = this.httpClient
-      .get('https://localhost:5001/api/User')
+      .get(`${this.getCurrentHost()}/api/User`)
       .subscribe((result) => {
         data = result;
         console.log(result);
@@ -37,9 +37,14 @@ export class HomeComponent implements OnInit {
   }
 
   callApi() {
-
     this.dataFromAzureProtectedApi$ = this.httpClient
-      .get('https://localhost:5001/api/DirectApi')
+      .get(`${this.getCurrentHost()}/api/DirectApi`)
       .pipe(catchError((error) => of(error)));
+  }
+
+  public getCurrentHost() {
+    const host = window.location.host;
+    const url = `${window.location.protocol}//${host}`;
+    return url;
   }
 }
