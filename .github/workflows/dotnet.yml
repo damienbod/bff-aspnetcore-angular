@@ -15,14 +15,17 @@ jobs:
 
     steps:
       - name: npm install nx
+        working-directory: ui
         run: npm install nx@latest
+
       - name: npm setup
+        working-directory: ui
         run: npm install
-        working-directory: ../ui
+
       - name: ui-nx-build
+        working-directory: ui
         run: npm build ui
-        working-directory: ../ui
-      
+
       - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
