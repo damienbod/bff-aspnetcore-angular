@@ -1,6 +1,6 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideHttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { SecureApiInterceptor } from './secureapi.interceptor';
+import { SecureApiInterceptor } from './secure-api.interceptor';
 
 import {
   provideRouter,
