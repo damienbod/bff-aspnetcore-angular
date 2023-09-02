@@ -34,6 +34,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: npm setup
+        working-directory: ui
+        run: npm install
+
+      - name: ui-nx-build
+        working-directory: ui
+        run: npm run build
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
