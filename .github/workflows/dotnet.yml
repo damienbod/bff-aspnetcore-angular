@@ -14,18 +14,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-  
+      - uses: nrwl/nx-set-shas@v3 
       - name: npm install nx
         run: npm install nx@latest
+
       - name: npm setup
         run: npm install
         working-directory: ui
-      - name: nx build
-        uses: nrwl/nx-set-shas@v3 
+      - name: ui-nx-build
         run: nx build
-        working-directory: ui
-  
+      
+      - uses: actions/checkout@v3
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
