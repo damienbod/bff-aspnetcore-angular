@@ -11,7 +11,6 @@ export class SecureApiInterceptor implements HttpInterceptor {
     next: HttpHandler
   ) {
 
-    console.warn("wsswwsss");
     if (!this.secureRoutes.find((x) => request.url.startsWith(x))) {
       return next.handle(request);
     }
@@ -20,7 +19,6 @@ export class SecureApiInterceptor implements HttpInterceptor {
       headers: request.headers.set('X-XSRF-TOKEN', getCookie("XSRF-RequestToken")),
     });
 
-    console.warn("ddddddddd");
     return next.handle(request);
   }
 }

@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideHttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi } from "@angular/common/http";
 import { SecureApiInterceptor } from './secure-api.interceptor';
 
 import {
@@ -11,7 +11,9 @@ import { appRoutes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), 
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptorsFromDi(),
+    ),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SecureApiInterceptor,
