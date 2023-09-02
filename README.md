@@ -85,3 +85,7 @@ The application(s) are deployed as one.
 This is an OpenID Connect confidential client with a user secret or a certification for client assertion.
 
 Use the Web client type on setup.
+
+## github actions build
+
+## github actions Azure deployment
