@@ -1,5 +1,5 @@
 {
-  "name": "myngapp",
+  "name": "ui",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
@@ -48,18 +48,18 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
-	  "options": {
-		"browserTarget": "myngapp:build",
-		"sslKey": "certs/dev_localhost.key",
-		"sslCert": "certs/dev_localhost.pem",
-		"port": 4201
-	  },
+      "options": {
+      "browserTarget": "ui:build",
+      "sslKey": "certs/dev_localhost.key",
+      "sslCert": "certs/dev_localhost.pem",
+      "port": 4201
+      },
       "configurations": {
         "production": {
-          "browserTarget": "myngapp:build:production",
+          "browserTarget": "ui:build:production",
         },
         "development": {
-          "browserTarget": "myngapp:build:development",
+          "browserTarget": "ui:build:development",
         }
       },
       "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "myngapp:build"
+        "browserTarget": "ui:build"
       }
     },
     "lint": {

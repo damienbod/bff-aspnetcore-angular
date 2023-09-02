@@ -18,5 +18,5 @@
       }
     }
   },
-  "implicitDependencies": ["myngapp"]
+  "implicitDependencies": ["ui"]
 }
