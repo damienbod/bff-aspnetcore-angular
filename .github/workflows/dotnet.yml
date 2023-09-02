@@ -30,7 +30,7 @@ jobs:
 
       - name: ui-nx-build
         working-directory: ui
-        run: npm build ui
+        run: npm build
 
 
       - name: Build
