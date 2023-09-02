@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   callApi() {
+
     this.dataFromAzureProtectedApi$ = this.httpClient
       .get('https://localhost:5001/api/DirectApi')
       .pipe(catchError((error) => of(error)));
