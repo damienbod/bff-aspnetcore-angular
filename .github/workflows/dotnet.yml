@@ -18,10 +18,10 @@ jobs:
         run: npm install nx@latest
       - name: npm setup
         run: npm install
-        working-directory: ./ui
+        working-directory: ../ui
       - name: ui-nx-build
         run: npm build ui
-        working-directory: ./ui
+        working-directory: ../ui
       
       - uses: actions/checkout@v3
       - name: Setup .NET
