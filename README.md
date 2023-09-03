@@ -1,8 +1,6 @@
 # BFF security architecture using ASP.NET core and nx Angular
 
-[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml)
-
-[![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml)
+[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml) [![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml)
 
 ## Setup Server 
 
@@ -78,7 +76,7 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
 
 ## Setup development
 
-![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff--arch-development_01.png)
+![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
 We always run in HTTPS
 
