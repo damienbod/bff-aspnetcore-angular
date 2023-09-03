@@ -138,6 +138,12 @@ jobs:
 
 See **azure-webapps-dotnet-core.yml**
 
+deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
+
 ## Links
 
-bff-angular-aspnetcore.azurewebsites.net
+https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
+
+https://nx.dev/getting-started/intro
+
+https://github.com/AzureAD/microsoft-identity-web
