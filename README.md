@@ -127,6 +127,20 @@ services.AddRazorPages().AddMvcOptions(options =>
 }).AddMicrosoftIdentityUI();
 ```
 
+App Service (linux plan) configuration 
+
+```
+AzureAd__Instance               --your-value--
+AzureAd__Domain                 --your-value--
+AzureAd__TenantId               --your-value--
+AzureAd__ClientId               --your-value--
+AzureAd__CallbackPath           /signin-oidc
+AzureAd__SignedOutCallbackPath  /signout-callback-oidc
+```
+
+The client secret or client certificate needs to be setup, see Microsoft Entra ID documentation.
+
+
 ## github actions build
 
 Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Angular nx project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
