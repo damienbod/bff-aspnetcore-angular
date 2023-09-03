@@ -8,7 +8,7 @@ In production, the Angular nx project is built into the **wwwroot** of the .NET 
 
 ![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.png)
 
-Configure the YARP reverse proxy to match the Angular nx URL. This is only required in development.
+Configure the YARP reverse proxy to match the Angular nx URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular nx developement env.
 
 ```json
  "UiDevServerUrl": "https://localhost:4201",
@@ -16,7 +16,6 @@ Configure the YARP reverse proxy to match the Angular nx URL. This is only requi
     "Routes": {
       "route1": {
         "ClusterId": "cluster1",
-        // "AuthorizationPolicy": "CookieAuthenticationPolicy",
         "Match": {
           "Path": "{**catch-all}"
         }
