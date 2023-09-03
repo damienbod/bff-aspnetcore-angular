@@ -6,7 +6,6 @@ using System.Security.Claims;
 
 namespace BlazorBffOpenIDConnect.Server.Controllers;
 
-// orig src https://github.com/berhir/BlazorWebAssemblyCookieAuth
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
@@ -15,7 +14,7 @@ public class UserController : ControllerBase
     [AllowAnonymous]
     public IActionResult GetCurrentUser() => Ok(CreateUserInfo(User));
 
-    private UserInfo CreateUserInfo(ClaimsPrincipal claimsPrincipal)
+    private static UserInfo CreateUserInfo(ClaimsPrincipal claimsPrincipal)
     {
         if (!claimsPrincipal?.Identity?.IsAuthenticated ?? true)
         {
