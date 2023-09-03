@@ -4,6 +4,17 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 
+interface Claim {
+  type: string;
+  value: string;
+}
+
+interface UserProfile {
+  isAuthenticated: boolean;
+  nameClaimType: string;
+  roleClaimType: string;
+  claims: Claim[];
+}
 
 @Component({
   selector: 'app-home',
@@ -12,10 +23,11 @@ import { CommonModule } from "@angular/common";
   imports: [ CommonModule ],
 })
 export class HomeComponent implements OnInit {
-  dataFromAzureProtectedApi$: Observable<any>;
-  dataGraphApiCalls$: Observable<any>;
-  userProfileClaims: any;
+  dataFromAzureProtectedApi$: Observable<Array<string>>;
+  dataGraphApiCalls$: Observable<Array<string>>;
+  userProfileClaims: UserProfile;
   isAuthenticated = false;
+  
   constructor(
     private httpClient: HttpClient
   ) {}
@@ -28,7 +40,7 @@ export class HomeComponent implements OnInit {
   getUserProfile() {
     this.httpClient
       .get(`${this.getCurrentHost()}/api/User`)
-      .subscribe((result: any) => {
+      .subscribe((result: UserProfile) => {
         console.log(result);
 
         if(result.isAuthenticated) this.isAuthenticated = true;
@@ -48,7 +60,6 @@ export class HomeComponent implements OnInit {
       .pipe(catchError((error) => of(error)));
   }
 
-  
   private getCurrentHost() {
     const host = window.location.host;
     const url = `${window.location.protocol}//${host}`;
