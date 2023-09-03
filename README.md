@@ -4,7 +4,7 @@
 
 ## Setup Server 
 
-In production, the Angular nx project is built into the wwwroot of the .NET project.
+In production, the Angular nx project is built into the **wwwroot** of the .NET project.
 
 ![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.png)
 
@@ -74,13 +74,15 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
       },
 ```
 
+**Note** When creating a new Angular nx project, it adds git files as well, delete these as this is not required.
+
 ## Setup development
 
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
 We always run in HTTPS
 
-```json
+```
 nx server --ssl
 ```
 
