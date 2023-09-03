@@ -84,6 +84,8 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
 
 ## Setup development
 
+The development environment is setup to use the defualt tools for each of the tech stacks. Angular nx is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
+
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
 > [!NOTE]  
@@ -95,9 +97,7 @@ nx server --ssl
 
 ## Azure App Registration setup
 
-The application(s) are deployed as one. 
-
-This is an OpenID Connect confidential client with a user secret or a certification for client assertion.
+The application(s) are deployed as one. This is an OpenID Connect confidential client with a user secret or a certification for client assertion.
 
 Use the Web client type on setup.
 
@@ -192,3 +192,5 @@ https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
 https://nx.dev/getting-started/intro
 
 https://github.com/AzureAD/microsoft-identity-web
+
+https://github.com/isolutionsag/aspnet-react-bff-proxy-example
