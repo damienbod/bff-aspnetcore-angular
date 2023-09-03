@@ -73,7 +73,8 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
       },
 ```
 
-**Note** When creating a new Angular nx project, it adds git files as well, delete these as this is not required.
+> [!NOTE]  
+> When creating a new Angular nx project, it adds git files as well, delete these as this is not required.
 
 ## Setup development
 
