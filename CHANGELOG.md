@@ -2,7 +2,7 @@
 
 ### 2023-09-03 0.0.1
 
-- Initial version using Angular Standalonx nx
+- Initial version using Angular Standalone nx
   - ASP.NET Core 7.x
   - Angular 16.x
   
