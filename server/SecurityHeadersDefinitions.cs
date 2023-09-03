@@ -28,8 +28,8 @@ public static class SecurityHeadersDefinitions
                 builder.AddFrameAncestors().None();
 
                 //builder.AddStyleSrc().Self().UnsafeInline();
-                builder.AddStyleSrc().Self().WithNonce();
-                builder.AddScriptSrc().Self().WithNonce();
+                builder.AddStyleSrc().Self().WithNonce().UnsafeInline();
+                builder.AddScriptSrc().Self().WithNonce().UnsafeInline();
             })
             .RemoveServerHeader()
             .AddPermissionsPolicy(builder =>
