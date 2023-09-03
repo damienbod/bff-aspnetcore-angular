@@ -103,6 +103,29 @@ Use the Web client type on setup.
 
 ![BFF Azure registration](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/azure-app-registration_01.png)
 
+The OpenID Connect client is setup using **Microsoft.Identity.Web**. This implements the Microsoft Entra ID client. I have created downstream APIs using the OBO flow and a Microsoft Graph client. This could be replace with any OpenID Connect client and requires no changes in the frontend part of the solution.
+
+```csharp
+var scopes = configuration.GetValue<string>("DownstreamApi:Scopes");
+string[] initialScopes = scopes!.Split(' ');
+
+services.AddMicrosoftIdentityWebAppAuthentication(configuration)
+    .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
+    .AddMicrosoftGraph("https://graph.microsoft.com/v1.0", initialScopes)
+    .AddInMemoryTokenCaches();
+
+services.AddControllersWithViews(options =>
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+
+services.AddRazorPages().AddMvcOptions(options =>
+{
+    //var policy = new AuthorizationPolicyBuilder()
+    //    .RequireAuthenticatedUser()
+    //    .Build();
+    //options.Filters.Add(new AuthorizeFilter(policy));
+}).AddMicrosoftIdentityUI();
+```
+
 ## github actions build
 
 ```yaml
