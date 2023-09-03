@@ -128,6 +128,8 @@ services.AddRazorPages().AddMvcOptions(options =>
 
 ## github actions build
 
+Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Angular nx project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
+
 ```yaml
 
 name: .NET and npm build
