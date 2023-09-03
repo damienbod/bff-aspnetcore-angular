@@ -93,6 +93,8 @@ This is an OpenID Connect confidential client with a user secret or a certificat
 
 Use the Web client type on setup.
 
+![BFF Azure registration](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/azure-app-registration_01.png)
+
 ## github actions build
 
 ```yaml
