@@ -1,6 +1,7 @@
 # BFF security architecture using ASP.NET core and nx Angular
 
-[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml) [![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg?branch=deploy)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml)
+[![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml) [![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg?branch=deploy)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml) [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/LICENSE)
+
 
 ## Setup Server 
 
@@ -171,7 +172,7 @@ jobs:
 
 ## github actions Azure deployment
 
-See **azure-webapps-dotnet-core.yml**
+The deployment pipeline builds both projects and deployes this to Azure using an Azure App Service. See **azure-webapps-dotnet-core.yml**
 
 deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 
@@ -183,7 +184,6 @@ deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 - ASP.NET Core
 - Angular 
 - Nx
-
 
 ## Links
 
