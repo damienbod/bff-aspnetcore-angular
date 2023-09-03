@@ -150,6 +150,16 @@ See **azure-webapps-dotnet-core.yml**
 
 deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 
+## Credits and used libraries
+
+- NetEscapades.AspNetCore.SecurityHeaders
+- Yarp.ReverseProxy
+- Microsoft.Identity.Web
+- ASP.NET Core
+- Angular 
+- Nx
+
+
 ## Links
 
 https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
