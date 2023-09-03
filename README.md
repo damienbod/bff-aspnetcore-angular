@@ -4,6 +4,8 @@
 
 ## Setup Server 
 
+The ASP.NET Core project is setup to run in development and production. In production, it uses the Angular production build deployed to the wwwroot. In development, it uses MS YARP reverse proxy to forward requests.
+
 > [!IMPORTANT]  
 > In production, the Angular nx project is built into the **wwwroot** of the .NET project.
 
