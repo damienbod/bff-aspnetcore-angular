@@ -4,5 +4,5 @@
 
 - Initial version using Angular Standalone nx and ASP.NET Core
   - ASP.NET Core version 7.x
-  - Angular Standalone version16.x
+  - Angular Standalone version 16.x
   
