@@ -27,9 +27,8 @@ public static class SecurityHeadersDefinitions
                 builder.AddBaseUri().Self();
                 builder.AddFrameAncestors().None();
 
-                //builder.AddStyleSrc().Self().UnsafeInline();
-                builder.AddStyleSrc().Self().WithNonce().UnsafeInline();
-                builder.AddScriptSrc().Self().WithNonce().UnsafeInline();
+                builder.AddStyleSrc().Self().UnsafeInline();
+                builder.AddScriptSrc().Self().WithNonce();
             })
             .RemoveServerHeader()
             .AddPermissionsPolicy(builder =>
