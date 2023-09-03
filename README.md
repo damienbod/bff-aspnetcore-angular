@@ -4,7 +4,8 @@
 
 ## Setup Server 
 
-In production, the Angular nx project is built into the **wwwroot** of the .NET project.
+> [!IMPORTANT]  
+> In production, the Angular nx project is built into the **wwwroot** of the .NET project.
 
 ![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.png)
 
@@ -55,6 +56,9 @@ Update the nx project.json file:
 },
 ```
 
+> [!NOTE]  
+> default Angular using port 4200, this needs to match the YARP reverse proxy settings for development.
+
 Update the outputPath for the (nx build) to deploy the production paths to the wwwroot of the .NET project
 
 ```
@@ -80,7 +84,8 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
 
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
-We always run in HTTPS
+> [!NOTE]  
+> Always run in HTTPS, both in development and production
 
 ```
 nx server --ssl
