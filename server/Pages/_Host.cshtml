@@ -26,6 +26,9 @@
     // The nonce is passed to the client through the HTML to avoid sync issues between tabs
     source = source.Replace("**PLACEHOLDER_NONCE_SERVER**", nonce);
 
+    source = source.Replace("ngcspnonce", "ngCspNonce");
+    
+
     var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
     var requestToken = xsrf.RequestToken;
 
