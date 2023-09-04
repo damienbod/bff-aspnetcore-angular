@@ -28,8 +28,8 @@ public static class SecurityHeadersDefinitions
                 builder.AddFrameAncestors().None();
 
                 // Angular bug in production build version 16.2, cannot use a nonce in styles
-                //builder.AddStyleSrc().Self().WithNonce().UnsafeInline();
-                builder.AddStyleSrc().Self().UnsafeInline();
+                builder.AddStyleSrc().Self().WithNonce().UnsafeInline();
+                //builder.AddStyleSrc().Self().UnsafeInline();
                 builder.AddScriptSrc().Self().WithNonce();
             })
             .RemoveServerHeader()
