@@ -1,5 +1,10 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-09-05 0.0.3
+
+- Improved CSP
+- Improved Angular code, use a function for the interceptor, code styles and build
+
 ### 2023-09-04 0.0.2
 
 - Added support for Angular CSP style nonce
