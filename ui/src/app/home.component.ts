@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 interface Claim {
   type: string;
@@ -20,49 +19,41 @@ interface UserProfile {
   selector: 'app-home',
   standalone: true,
   templateUrl: 'home.component.html',
-  imports: [ CommonModule ],
+  imports: [CommonModule],
 })
 export class HomeComponent implements OnInit {
-  dataFromAzureProtectedApi$: Observable<Array<string>>;
-  dataGraphApiCalls$: Observable<Array<string>>;
-  userProfileClaims: UserProfile;
-  isAuthenticated = false;
-  
-  constructor(
-    private httpClient: HttpClient
-  ) {}
+  private readonly httpClient = inject(HttpClient);
+  dataFromAzureProtectedApi$: Observable<string[]>;
+  dataGraphApiCalls$: Observable<string[]>;
+  userProfileClaims$: Observable<UserProfile>;
 
   ngOnInit() {
-      console.info('home component');
-      this.getUserProfile();
+    console.info('home component');
+    this.getUserProfile();
   }
 
   getUserProfile() {
-    this.httpClient
-      .get(`${this.getCurrentHost()}/api/User`)
-      .subscribe((result: UserProfile) => {
-        console.log(result);
-
-        if(result.isAuthenticated) this.isAuthenticated = true;
-        this.userProfileClaims = result;
-      });
+    this.userProfileClaims$ = this.httpClient.get<UserProfile>(
+      `${this.getCurrentHost()}/api/User`
+    );
   }
 
   getDirectApiData() {
-    this.dataFromAzureProtectedApi$ = this.httpClient
-      .get(`${this.getCurrentHost()}/api/DirectApi`)
-      .pipe(catchError((error) => of(error)));
+    this.dataFromAzureProtectedApi$ = this.httpClient.get<string[]>(
+      `${this.getCurrentHost()}/api/DirectApi`
+    );
   }
 
   getGraphApiDataUsingApi() {
-    this.dataGraphApiCalls$ = this.httpClient
-      .get(`${this.getCurrentHost()}/api/GraphApiData`)
-      .pipe(catchError((error) => of(error)));
+    this.dataGraphApiCalls$ = this.httpClient.get<string[]>(
+      `${this.getCurrentHost()}/api/GraphApiData`
+    );
   }
 
   private getCurrentHost() {
     const host = window.location.host;
     const url = `${window.location.protocol}//${host}`;
+
     return url;
   }
 }

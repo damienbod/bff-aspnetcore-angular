@@ -1,30 +1,33 @@
 <h2>BFF Security architecture with Angular nx</h2>
 
-<div *ngIf="isAuthenticated; else noAuth">
-  <button (click)="getDirectApiData()">get data from API direct</button>
-  <button (click)="getGraphApiDataUsingApi()">get Graph data using API</button>
-  <form method="post" action="api/Account/Logout">
-    <button class="btn btn-link" type="submit">Sign out</button>
-  </form>
-</div>
+<ng-container
+  *ngIf="userProfileClaims$ | async as userProfileClaims; else noAuth"
+>
+  <div *ngIf="userProfileClaims?.isAuthenticated">
+    <button (click)="getDirectApiData()">get data from API direct</button>
+    <button (click)="getGraphApiDataUsingApi()">
+      get Graph data using API
+    </button>
+    <form method="post" action="api/Account/Logout">
+      <button class="btn btn-link" type="submit">Sign out</button>
+    </form>
+  </div>
+  <hr />
+
+  <h2>User profile:</h2>
+  <pre>{{ userProfileClaims | json }}</pre>
+
+  <hr />
+
+  <h2>get direct data using API:</h2>
+  <pre>{{ dataFromAzureProtectedApi$ | async | json }}</pre>
+
+  <hr />
+
+  <h2>get Microsoft Graph data using API:</h2>
+  <pre>{{ dataGraphApiCalls$ | async | json }}</pre>
+</ng-container>
 
 <ng-template #noAuth>
   <a class="btn btn-link" href="api/Account/Login">Log in</a>
 </ng-template>
-
-<hr />
-
-<h2>User profile:</h2>
-<pre>{{ userProfileClaims | json }}</pre>
-
-<hr />
-
-<h2>get direct data using API:</h2>
-<pre>{{ dataFromAzureProtectedApi$ | async | json }}</pre>
-
-<hr />
-
-<h2>get Microsoft Graph data using API:</h2>
-<pre>{{ dataGraphApiCalls$ | async | json }}</pre>
-
-
