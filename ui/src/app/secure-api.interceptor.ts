@@ -1,36 +1,34 @@
-import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { getCookie } from "./getCookie";
+import { HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import { getCookie } from './getCookie';
 
-@Injectable()
-export class SecureApiInterceptor implements HttpInterceptor {
-  private secureRoutes = [ this.getApiUrl()];
+export function secureApiInterceptor(
+  request: HttpRequest<unknown>,
+  next: HttpHandlerFn
+) {
+  const secureRoutes = [getApiUrl()];
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ) {
-
-    if (!this.secureRoutes.find((x) => request.url.startsWith(x))) {
-      return next.handle(request);
-    }
-
-    request = request.clone({
-      headers: request.headers.set('X-XSRF-TOKEN', getCookie("XSRF-RequestToken")),
-    });
-
-    return next.handle(request);
+  if (!secureRoutes.find((x) => request.url.startsWith(x))) {
+    return next(request);
   }
 
-  public getApiUrl() {
-    const backendHost = this.getCurrentHost();
+  request = request.clone({
+    headers: request.headers.set(
+      'X-XSRF-TOKEN',
+      getCookie('XSRF-RequestToken')
+    ),
+  });
 
-    return `${backendHost}/api/`;
-  }
+  return next(request);
+}
 
-  public getCurrentHost() {
-    const host = window.location.host;
-    const url = `${window.location.protocol}//${host}`;
-    return url;
-  }
+function getApiUrl() {
+  const backendHost = getCurrentHost();
+
+  return `${backendHost}/api/`;
+}
+
+function getCurrentHost() {
+  const host = window.location.host;
+  const url = `${window.location.protocol}//${host}`;
+  return url;
 }
