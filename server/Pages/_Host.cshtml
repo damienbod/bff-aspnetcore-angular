@@ -29,7 +29,6 @@
     var nonceScript = $"script nonce={nonce} src=";
     source = source.Replace("script src=", nonceScript);
 
-    
     var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
     var requestToken = xsrf.RequestToken;
 
