@@ -14,7 +14,6 @@ public static class SecurityHeadersDefinitions
             .AddXssProtectionBlock()
             .AddContentTypeOptionsNoSniff()
             .AddReferrerPolicyStrictOriginWhenCrossOrigin()
-            .AddCustomHeader("require-trusted-types-for", "'script'")
             .AddCrossOriginOpenerPolicy(builder => builder.SameOrigin())
             .AddCrossOriginResourcePolicy(builder => builder.SameOrigin())
             .AddCrossOriginEmbedderPolicy(builder => builder.RequireCorp()) // remove for dev if using hot reload
@@ -29,7 +28,7 @@ public static class SecurityHeadersDefinitions
                 builder.AddFrameAncestors().None();
 
                 builder.AddStyleSrc().Self().WithNonce().UnsafeInline();
-                builder.AddScriptSrc().Self().WithNonce().UnsafeInline();
+                builder.AddScriptSrc().WithNonce().UnsafeInline();
             })
             .RemoveServerHeader()
             .AddPermissionsPolicy(builder =>
