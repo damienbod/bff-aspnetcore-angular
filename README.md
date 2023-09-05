@@ -59,7 +59,7 @@ Update the nx project.json file:
 ```
 
 > [!NOTE]  
-> default Angular using port 4200, this needs to match the YARP reverse proxy settings for development.
+> The default Angular setup uses port 4200, this needs to match the YARP reverse proxy settings for development.
 
 Update the outputPath for the (nx build) to deploy the production paths to the wwwroot of the .NET project
 
