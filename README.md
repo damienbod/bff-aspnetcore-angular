@@ -156,6 +156,21 @@ AzureAd__SignedOutCallbackPath  /signout-callback-oidc
 
 The client secret or client certificate needs to be setup, see Microsoft Entra ID documentation.
 
+## Debugging
+
+Start the Angular project from the **ui** folder
+
+```
+nx serve --ssl
+```
+
+Start the ASP.NET Core project from the **server** folder
+
+```
+dotnet run
+```
+
+Or just open Visual Studio and run the solution.
 
 ## github actions build
 
