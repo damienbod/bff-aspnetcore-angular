@@ -3,7 +3,7 @@
 <ng-container
   *ngIf="userProfileClaims$ | async as userProfileClaims; else noAuth"
 >
-  <div *ngIf="userProfileClaims?.isAuthenticated">
+  <div *ngIf="userProfileClaims?.isAuthenticated; else noAuth">
     <button (click)="getDirectApiData()">get data from API direct</button>
     <button (click)="getGraphApiDataUsingApi()">
       get Graph data using API
@@ -12,6 +12,7 @@
       <button class="btn btn-link" type="submit">Sign out</button>
     </form>
   </div>
+
   <hr />
 
   <h2>User profile:</h2>
