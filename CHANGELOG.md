@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-09-08 0.0.4
+
+- Fix Microsoft Graph in-memory missing cache when using downstream APIs
+
 ### 2023-09-05 0.0.3
 
 - Improved CSP
