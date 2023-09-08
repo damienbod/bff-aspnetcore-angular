@@ -6,13 +6,20 @@ namespace BffAzureAD.Server
 {
     public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticationEvents
     {
+        private readonly string[] _downstreamScopes;
+
+        public RejectSessionCookieWhenAccountNotInCacheEvents(string[] downstreamScopes)
+        {
+            _downstreamScopes = downstreamScopes;
+        }
+
         public async override Task ValidatePrincipal(CookieValidatePrincipalContext context)
         {
             try
             {
                 var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
                 string token = await tokenAcquisition.GetAccessTokenForUserAsync(
-                    scopes: new[] { "User.ReadBasic.All", "user.read" },
+                    scopes: _downstreamScopes,
                     user: context.Principal);
             }
             catch (MicrosoftIdentityWebChallengeUserException ex)

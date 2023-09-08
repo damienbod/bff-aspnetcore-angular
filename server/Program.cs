@@ -40,8 +40,9 @@ services.AddMicrosoftIdentityWebAppAuthentication(configuration)
     .AddInMemoryTokenCaches();
 
 // If using downstream APIs and in memory cache, you need to reset the cookiw session if the cache is missing
+// The check is only for single scopes
 services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, 
-    options =>  options.Events = new RejectSessionCookieWhenAccountNotInCacheEvents());
+    options =>  options.Events = new RejectSessionCookieWhenAccountNotInCacheEvents(initialScopes));
 
 services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
