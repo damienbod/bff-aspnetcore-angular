@@ -1,5 +1,6 @@
 ﻿using BffAzureAD.Server;
 using BffAzureAD.Server.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
@@ -37,6 +38,10 @@ services.AddMicrosoftIdentityWebAppAuthentication(configuration)
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
     .AddMicrosoftGraph("https://graph.microsoft.com/v1.0", initialScopes)
     .AddInMemoryTokenCaches();
+
+// If using downstream APIs and in memory cache, you need to reset the cookiw session if the cache is missing
+services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, 
+    options =>  options.Events = new RejectSessionCookieWhenAccountNotInCacheEvents());
 
 services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
