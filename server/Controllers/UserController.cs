@@ -1,4 +1,4 @@
-﻿using BffAzureAD.Server.Models;
+﻿using BffMicrosoftEntraID.Server.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

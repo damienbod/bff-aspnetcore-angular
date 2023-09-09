@@ -1,10 +1,10 @@
-﻿using BffAzureAD.Server.Services;
+﻿using BffMicrosoftEntraID.Server.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web;
 
-namespace BffAzureAD.Server.Controllers;
+namespace BffMicrosoftEntraID.Server.Controllers;
 
 [ValidateAntiForgeryToken]
 [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]

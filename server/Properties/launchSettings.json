@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "BffAzureAD.Server": {
+    "BffMicrosoftEntraID.Server": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

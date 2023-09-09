@@ -1,4 +1,4 @@
-﻿namespace BffAzureAD.Server.Models;
+﻿namespace BffMicrosoftEntraID.Server.Models;
 
 public class ClaimValue
 {

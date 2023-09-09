@@ -1,6 +1,6 @@
 using Microsoft.Net.Http.Headers;
 
-namespace BffAzureAD.Server.Services;
+namespace BffMicrosoftEntraID.Server.Services;
 
 public static class ApplicationBuilderExtensions
 {

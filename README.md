@@ -109,7 +109,7 @@ The OpenID Connect client is setup using **Microsoft.Identity.Web**. This implem
 var scopes = configuration.GetValue<string>("DownstreamApi:Scopes");
 string[] initialScopes = scopes!.Split(' ');
 
-services.AddMicrosoftIdentityWebAppAuthentication(configuration)
+services.AddMicrosoftIdentityWebAppAuthentication(configuration, "MicrosoftEntraID")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
     .AddMicrosoftGraph("https://graph.microsoft.com/v1.0", initialScopes)
     .AddInMemoryTokenCaches();
@@ -129,7 +129,7 @@ services.AddRazorPages().AddMvcOptions(options =>
 Add the Azure App registration settings to the **appsettings.Development.json** and the **ClientSecret** to the user secrets.
 
 ```json
-"AzureAd": {
+"MicrosoftEntraID": {
     "Instance": "https://login.microsoftonline.com/",
     "Domain": "[Enter the domain of your tenant, e.g. contoso.onmicrosoft.com]",
     "TenantId": "[Enter 'common', or 'organizations' or the Tenant Id (Obtained from the Azure portal. Select 'Endpoints' from the 'App registrations' blade and use the GUID in any of the URLs), e.g. da41245a5-11b3-996c-00a8-4d99re19f292]",
@@ -146,12 +146,12 @@ Add the Azure App registration settings to the **appsettings.Development.json** 
 App Service (linux plan) configuration 
 
 ```
-AzureAd__Instance               --your-value--
-AzureAd__Domain                 --your-value--
-AzureAd__TenantId               --your-value--
-AzureAd__ClientId               --your-value--
-AzureAd__CallbackPath           /signin-oidc
-AzureAd__SignedOutCallbackPath  /signout-callback-oidc
+MicrosoftEntraID__Instance               --your-value--
+MicrosoftEntraID__Domain                 --your-value--
+MicrosoftEntraID__TenantId               --your-value--
+MicrosoftEntraID__ClientId               --your-value--
+MicrosoftEntraID__CallbackPath           /signin-oidc
+MicrosoftEntraID__SignedOutCallbackPath  /signout-callback-oidc
 ```
 
 The client secret or client certificate needs to be setup, see Microsoft Entra ID documentation.

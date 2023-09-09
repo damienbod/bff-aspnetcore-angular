@@ -1,4 +1,4 @@
-namespace BffAzureAD.Server.Services;
+namespace BffMicrosoftEntraID.Server.Services;
 
 public static class EndpointRouteBuilderExtensions
 {

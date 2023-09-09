@@ -1,4 +1,4 @@
-﻿namespace BffAzureAD.Server;
+﻿namespace BffMicrosoftEntraID.Server;
 
 /// <summary>
 /// Claims challenges, claims requests, and client capabilities

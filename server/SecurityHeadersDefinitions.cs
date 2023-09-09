@@ -1,4 +1,4 @@
-﻿namespace BffAzureAD.Server;
+﻿namespace BffMicrosoftEntraID.Server;
 
 public static class SecurityHeadersDefinitions
 {

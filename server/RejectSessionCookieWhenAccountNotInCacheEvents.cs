@@ -2,7 +2,7 @@
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
 
-namespace BffAzureAD.Server;
+namespace BffMicrosoftEntraID.Server;
 
 public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticationEvents
 {

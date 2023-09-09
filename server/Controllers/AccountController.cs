@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BffAzureAD.Server.Controllers;
+namespace BffMicrosoftEntraID.Server.Controllers;
 
 // orig src https://github.com/berhir/BlazorWebAssemblyCookieAuth
 [Route("api/[controller]")]

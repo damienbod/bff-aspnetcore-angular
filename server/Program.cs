@@ -1,5 +1,5 @@
-﻿using BffAzureAD.Server;
-using BffAzureAD.Server.Services;
+﻿using BffMicrosoftEntraID.Server;
+using BffMicrosoftEntraID.Server.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web;
@@ -34,7 +34,7 @@ services.AddOptions();
 var scopes = configuration.GetValue<string>("DownstreamApi:Scopes");
 string[] initialScopes = scopes!.Split(' ');
 
-services.AddMicrosoftIdentityWebAppAuthentication(configuration)
+services.AddMicrosoftIdentityWebAppAuthentication(configuration, "MicrosoftEntraID")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
     .AddMicrosoftGraph("https://graph.microsoft.com/v1.0", initialScopes)
     .AddInMemoryTokenCaches();
@@ -76,7 +76,7 @@ else
 
 app.UseSecurityHeaders(
     SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-        configuration["AzureAd:Instance"]));
+        configuration["MicrosoftEntraID:Instance"]));
 
 app.UseHttpsRedirection();
 
