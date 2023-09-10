@@ -1,9 +1,9 @@
 
-# OpenID Connect identity providers samples
+# OpenID Connect identity provider samples
 
 Examples of different OpenID Connect identity providers using this solution
 
-## Microsoft Entra ID
+## Microsoft Entra ID (B2B)
 
 See example in this repo.
 
@@ -19,6 +19,6 @@ https://github.com/damienbod/bff-auth0-aspnetcore-angular
 
 https://github.com/damienbod/bff-azureadb2c-aspnetcore-angular
 
-## Microsoft Entra External ID (CIAM, for customers)
+## Microsoft Entra External ID (for customers)
 
 https://github.com/damienbod/bff-MicrosoftEntraExternalID-aspnetcore-angular
