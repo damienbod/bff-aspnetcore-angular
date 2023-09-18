@@ -239,3 +239,5 @@ https://nx.dev/getting-started/intro
 https://github.com/AzureAD/microsoft-identity-web
 
 https://github.com/isolutionsag/aspnet-react-bff-proxy-example
+
+https://github.com/damienbod/bff-auth0-aspnetcore-angular
