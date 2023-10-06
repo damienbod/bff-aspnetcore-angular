@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-10-06 0.0.5
+
+- Improved CSP for styles, local dev cannot use a nonce and production forses nonce for styles.
+
 ### 2023-09-08 0.0.4
 
 - Fix Microsoft Graph in-memory missing cache when using downstream APIs
