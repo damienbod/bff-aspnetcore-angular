@@ -29,6 +29,10 @@
     var nonceScript = $"script nonce={nonce} src=";
     source = source.Replace("script src=", nonceScript);
 
+    // link rel="stylesheet"
+    var nonceLinkStyle = $"<link nonce=\"{nonce}\" rel=\"stylesheet";
+    source = source.Replace("<link rel=\"stylesheet", nonceLinkStyle);
+
     var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
     var requestToken = xsrf.RequestToken;
 
