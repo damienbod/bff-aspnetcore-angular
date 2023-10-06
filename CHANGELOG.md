@@ -2,7 +2,7 @@
 
 ### 2023-10-06 0.0.5
 
-- Improved CSP for styles, local dev cannot use a nonce and production forses nonce for styles.
+- Improved CSP for styles, local dev cannot use a nonce and production forces nonce for styles.
 
 ### 2023-09-08 0.0.4
 
