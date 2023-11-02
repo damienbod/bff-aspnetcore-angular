@@ -11,7 +11,6 @@ public static class SecurityHeadersDefinitions
 
         var policy = new HeaderPolicyCollection()
             .AddFrameOptionsDeny()
-            .AddXssProtectionBlock()
             .AddContentTypeOptionsNoSniff()
             .AddReferrerPolicyStrictOriginWhenCrossOrigin()
             .AddCrossOriginOpenerPolicy(builder => builder.SameOrigin())
