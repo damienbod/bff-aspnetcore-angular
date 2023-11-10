@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-11-10 0.0.6
+
+- Angular 17
+
 ### 2023-10-06 0.0.5
 
 - Improved CSP for styles, local dev cannot use a nonce and production forces nonce for styles.

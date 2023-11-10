@@ -49,17 +49,17 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-      "browserTarget": "ui:build",
-      "sslKey": "certs/dev_localhost.key",
-      "sslCert": "certs/dev_localhost.pem",
-      "port": 4201
+        "sslKey": "certs/dev_localhost.key",
+        "sslCert": "certs/dev_localhost.pem",
+        "port": 4201,
+        "buildTarget": "ui:build"
       },
       "configurations": {
         "production": {
-          "browserTarget": "ui:build:production",
+          "buildTarget": "ui:build:production"
         },
         "development": {
-          "browserTarget": "ui:build:development",
+          "buildTarget": "ui:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -67,11 +67,11 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "ui:build"
+        "buildTarget": "ui:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["./src/**/*.ts", "./src/**/*.html"]
@@ -81,14 +81,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "options": {
-        "jestConfig": "jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "jest.config.ts"
       }
     }
   }
