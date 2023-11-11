@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-11-14 0.0.7
+
+- .NET 8
+
 ### 2023-11-10 0.0.6
 
 - Angular 17
