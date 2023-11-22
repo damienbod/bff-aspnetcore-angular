@@ -84,7 +84,7 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
 
 ## Setup development
 
-The development environment is setup to use the defualt tools for each of the tech stacks. Angular nx is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
+The development environment is setup to use the default tools for each of the tech stacks. Angular nx is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
 
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
