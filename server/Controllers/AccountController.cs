@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BffMicrosoftEntraID.Server.Controllers;
+﻿namespace BffMicrosoftEntraID.Server.Controllers;
 
 // orig src https://github.com/berhir/BlazorWebAssemblyCookieAuth
 [Route("api/[controller]")]
@@ -22,7 +16,7 @@ public class AccountController : ControllerBase
         if(claimsChallenge != null)
         {
             string jsonString = claimsChallenge.Replace("\\", "")
-                .Trim(new char[1] { '"' });
+                .Trim(['"']);
 
             properties.Items["claims"] = jsonString;
         }

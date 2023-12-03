@@ -1,10 +1,4 @@
-﻿using BffMicrosoftEntraID.Server.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-using System.Security.Claims;
-
-namespace BlazorBffOpenIDConnect.Server.Controllers;
+﻿namespace BlazorBffOpenIDConnect.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
