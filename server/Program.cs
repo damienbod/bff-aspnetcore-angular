@@ -1,4 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
@@ -50,14 +50,14 @@ services.AddRazorPages().AddMvcOptions(options =>
 }).AddMicrosoftIdentityUI();
 
 services.AddReverseProxy()
-   .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+        .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
 var app = builder.Build();
 
-IdentityModelEventSource.ShowPII = true;
-
 if (env.IsDevelopment())
 {
+    IdentityModelEventSource.ShowPII = true;
+
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
 }
