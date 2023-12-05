@@ -1,14 +1,8 @@
-﻿using BffMicrosoftEntraID.Server.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web;
-
-namespace BffMicrosoftEntraID.Server.Controllers;
+﻿namespace BffMicrosoftEntraID.Server.Controllers;
 
 [ValidateAntiForgeryToken]
 [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-[AuthorizeForScopes(Scopes = new string[] { "User.ReadBasic.All user.read" })]
+[AuthorizeForScopes(Scopes = ["User.ReadBasic.All user.read"])]
 [ApiController]
 [Route("api/[controller]")]
 public class GraphApiDataController : ControllerBase

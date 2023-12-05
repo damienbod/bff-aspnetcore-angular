@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Web;
-
-namespace BffMicrosoftEntraID.Server;
+﻿namespace BffMicrosoftEntraID.Server;
 
 public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticationEvents
 {
@@ -30,8 +26,5 @@ public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticati
     }
 
     private static bool AccountDoesNotExitInTokenCache(MicrosoftIdentityWebChallengeUserException ex)
-    {
-        return ex.InnerException is MsalUiRequiredException 
-            && (ex.InnerException as MsalUiRequiredException)!.ErrorCode == "user_null";
-    }
+        => ex.InnerException is MsalUiRequiredException e && e.ErrorCode == "user_null";
 }

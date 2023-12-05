@@ -1,7 +1,4 @@
-﻿using System.Net.Http.Headers;
-using System.Net;
-
-namespace BffMicrosoftEntraID.Server;
+﻿namespace BffMicrosoftEntraID.Server;
 
 /// <summary>
 /// This exception class is used to pass HTTP CAE unauthorized responses from a Httpclient and 
@@ -10,25 +7,25 @@ namespace BffMicrosoftEntraID.Server;
 /// </summary>
 public class WebApiMsalUiRequiredException : Exception
 {
-    private readonly HttpResponseMessage httpResponseMessage;
+    private readonly HttpResponseMessage _httpResponseMessage;
 
-    public WebApiMsalUiRequiredException(string message, HttpResponseMessage response) : base(message)
+    public WebApiMsalUiRequiredException(string message, HttpResponseMessage httpResponseMessage) : base(message)
     {
-        httpResponseMessage = response;
+        _httpResponseMessage = httpResponseMessage;
     }
 
     public HttpStatusCode StatusCode
     {
-        get { return httpResponseMessage.StatusCode; }
+        get { return _httpResponseMessage.StatusCode; }
     }
 
     public HttpResponseHeaders Headers
     {
-        get { return httpResponseMessage.Headers; }
+        get { return _httpResponseMessage.Headers; }
     }
 
     public HttpResponseMessage HttpResponseMessage
     {
-        get { return httpResponseMessage; }
+        get { return _httpResponseMessage; }
     }
 }

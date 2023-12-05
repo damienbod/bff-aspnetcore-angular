@@ -1,12 +1,4 @@
-﻿using BffMicrosoftEntraID.Server;
-using BffMicrosoftEntraID.Server.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web;
-using Microsoft.Identity.Web.UI;
-using Microsoft.IdentityModel.Logging;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
@@ -57,15 +49,15 @@ services.AddRazorPages().AddMvcOptions(options =>
     //options.Filters.Add(new AuthorizeFilter(policy));
 }).AddMicrosoftIdentityUI();
 
-builder.Services.AddReverseProxy()
-   .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+services.AddReverseProxy()
+        .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
 var app = builder.Build();
 
-IdentityModelEventSource.ShowPII = true;
-
 if (env.IsDevelopment())
 {
+    IdentityModelEventSource.ShowPII = true;
+
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
 }
