@@ -1,7 +1,14 @@
 ﻿namespace BffMicrosoftEntraID.Server;
 
-public class RejectSessionCookieWhenAccountNotInCacheEvents(string[] downstreamScopes) : CookieAuthenticationEvents
+public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticationEvents
 {
+    private readonly string[] _downstreamScopes;
+
+    public RejectSessionCookieWhenAccountNotInCacheEvents(string[] downstreamScopes)
+    {
+        _downstreamScopes = downstreamScopes;
+    }
+
     public async override Task ValidatePrincipal(CookieValidatePrincipalContext context)
     {
         try
@@ -9,7 +16,7 @@ public class RejectSessionCookieWhenAccountNotInCacheEvents(string[] downstreamS
             var tokenAcquisition = context.HttpContext.RequestServices
                 .GetRequiredService<ITokenAcquisition>();
 
-            string token = await tokenAcquisition.GetAccessTokenForUserAsync(scopes: downstreamScopes, 
+            string token = await tokenAcquisition.GetAccessTokenForUserAsync(scopes: _downstreamScopes, 
                 user: context.Principal);
         }
         catch (MicrosoftIdentityWebChallengeUserException ex) when (AccountDoesNotExitInTokenCache(ex))

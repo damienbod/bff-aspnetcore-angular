@@ -5,20 +5,27 @@
 /// return the WWW-Authenticate header with the required claims challenge. 
 /// This is only required if using a downstream API
 /// </summary>
-public class WebApiMsalUiRequiredException(string message, HttpResponseMessage response) : Exception(message)
+public class WebApiMsalUiRequiredException : Exception
 {
+    private readonly HttpResponseMessage _httpResponseMessage;
+
+    public WebApiMsalUiRequiredException(string message, HttpResponseMessage httpResponseMessage) : base(message)
+    {
+        _httpResponseMessage = httpResponseMessage;
+    }
+
     public HttpStatusCode StatusCode
     {
-        get { return response.StatusCode; }
+        get { return _httpResponseMessage.StatusCode; }
     }
 
     public HttpResponseHeaders Headers
     {
-        get { return response.Headers; }
+        get { return _httpResponseMessage.Headers; }
     }
 
     public HttpResponseMessage HttpResponseMessage
     {
-        get { return response; }
+        get { return _httpResponseMessage; }
     }
 }
