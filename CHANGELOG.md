@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2023-12-30 0.0.8
+
+- Prevent open redirect attacks on login
+
 ### 2023-11-14 0.0.7
 
 - .NET 8
