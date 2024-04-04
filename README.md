@@ -13,6 +13,9 @@ The ASP.NET Core project is setup to run in development and production. In produ
 
 Configure the YARP reverse proxy to match the Angular nx URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular nx developement env.
 
+> [!IMPORTANT]  
+> In a real Angular project, the additional dev routes need to be added so that the __dev refresh__ works!
+
 ```json
  "UiDevServerUrl": "https://localhost:4201",
   "ReverseProxy": {
