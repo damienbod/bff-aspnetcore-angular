@@ -1,5 +1,10 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2024-04-14 0.0.9
+
+- Updated packages
+- Add better development proxy configurations, support UI refresh
+
 ### 2023-12-30 0.0.8
 
 - Prevent open redirect attacks on login
