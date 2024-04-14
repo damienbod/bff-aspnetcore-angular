@@ -18,12 +18,42 @@ Configure the YARP reverse proxy to match the Angular nx URL. This is only requi
 
 ```json
  "UiDevServerUrl": "https://localhost:4201",
-  "ReverseProxy": {
+ "ReverseProxy": {
     "Routes": {
-      "route1": {
+      "assets": {
         "ClusterId": "cluster1",
         "Match": {
-          "Path": "{**catch-all}"
+          "Path": "assets/{**catch-all}"
+        }
+      },
+      "routealljs": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "{nomatterwhat}.js"
+        }
+      },
+      "routeallcss": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "{nomatterwhat}.css"
+        }
+      },
+      "webpacklazyloadingsources": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "/src_{nomatterwhat}_ts.js"
+        }
+      },
+      "signalr": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "/ng-cli-ws"
+        }
+      },
+      "webpacknodesrcmap": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "/{nomatterwhat}.js.map"
         }
       }
     },
