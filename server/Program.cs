@@ -28,7 +28,7 @@ string[] initialScopes = scopes!.Split(' ');
 
 services.AddMicrosoftIdentityWebAppAuthentication(configuration, "MicrosoftEntraID")
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
-    .AddMicrosoftGraph("https://graph.microsoft.com/v1.0", initialScopes)
+    .AddMicrosoftGraph(defaultScopes: initialScopes)
     .AddInMemoryTokenCaches();
 
 // If using downstream APIs and in memory cache, you need to reset the cookie session if the cache is missing

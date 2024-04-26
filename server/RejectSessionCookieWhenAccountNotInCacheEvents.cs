@@ -16,7 +16,7 @@ public class RejectSessionCookieWhenAccountNotInCacheEvents : CookieAuthenticati
             var tokenAcquisition = context.HttpContext.RequestServices
                 .GetRequiredService<ITokenAcquisition>();
 
-            string token = await tokenAcquisition.GetAccessTokenForUserAsync(scopes: _downstreamScopes, 
+            await tokenAcquisition.GetAccessTokenForUserAsync(scopes: _downstreamScopes, 
                 user: context.Principal);
         }
         catch (MicrosoftIdentityWebChallengeUserException ex) when (AccountDoesNotExitInTokenCache(ex))
