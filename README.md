@@ -250,7 +250,7 @@ jobs:
 
 ## github actions Azure deployment
 
-The deployment pipeline builds both projects and deployes this to Azure using an Azure App Service. See **azure-webapps-dotnet-core.yml**
+The deployment pipeline builds both projects and deploys this to Azure using an Azure App Service. See **azure-webapps-dotnet-core.yml**
 
 deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 
