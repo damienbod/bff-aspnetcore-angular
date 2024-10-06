@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2024-10-06 0.0.15
+- Updated Angular to 18.2.7
+- Added CSP fixed for inconsistent Angular nonce generation
+
 ### 2024-10-04 0.0.14
 
 - Updated packages
