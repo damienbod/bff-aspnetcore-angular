@@ -39,7 +39,7 @@ jobs:
 
       - name: npm setup
         working-directory: ui
-        run: npm install
+        run: npm install --force
 
       - name: ui-nx-build
         working-directory: ui
