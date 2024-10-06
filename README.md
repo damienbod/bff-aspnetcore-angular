@@ -263,6 +263,14 @@ deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 - Angular 
 - Nx
 
+## Angular nx Updates
+
+```
+nx migrate latest
+
+nx migrate --run-migrations=migrations.json
+```
+
 ## Links
 
 https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
