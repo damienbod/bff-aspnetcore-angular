@@ -9,13 +9,13 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 
 var services = builder.Services;
 var configuration = builder.Configuration;
-var env = builder.Environment;
 
 services.AddSecurityHeaderPolicies()
   .SetPolicySelector((PolicySelectorContext ctx) =>
   {
-      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-        configuration["MicrosoftEntraID:Instance"]);
+      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(
+          builder.Environment.IsDevelopment(),
+          configuration["MicrosoftEntraID:Instance"]);
   });
 
 services.AddScoped<MsGraphService>();
@@ -63,7 +63,7 @@ services.AddReverseProxy()
 
 var app = builder.Build();
 
-if (env.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     IdentityModelEventSource.ShowPII = true;
 
