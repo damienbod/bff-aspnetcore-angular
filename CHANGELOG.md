@@ -1,6 +1,6 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
-### 2024-12-18 0.0.17
+### 2024-12-18 1.0.0
 - Updated packages
 - .NET 9
 - Angular 19
