@@ -16,10 +16,9 @@ interface UserProfile {
 }
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  templateUrl: 'home.component.html',
-  imports: [CommonModule],
+    selector: 'app-home',
+    templateUrl: 'home.component.html',
+    imports: [CommonModule]
 })
 export class HomeComponent implements OnInit {
   private readonly httpClient = inject(HttpClient);
