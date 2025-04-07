@@ -8,14 +8,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.1" NoWarn="NU1605" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Identity.Web.GraphServiceClient" Version="3.6.2" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="3.6.2" />
-		<PackageReference Include="Microsoft.Identity.Web.UI" Version="3.6.2" />
-		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.0.0-preview.3" />
-		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.0.0-preview.3" />
-		<PackageReference Include="Yarp.ReverseProxy" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.3" NoWarn="NU1605" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.3" />
+		<PackageReference Include="Microsoft.Identity.Web.GraphServiceClient" Version="3.8.2" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="3.8.2" />
+		<PackageReference Include="Microsoft.Identity.Web.UI" Version="3.8.2" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.0.0" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.0.0" />
+		<PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
 	</ItemGroup>
 
 </Project>
