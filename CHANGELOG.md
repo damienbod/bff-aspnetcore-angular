@@ -2,7 +2,7 @@
 
 ### 2025-04-07 1.0.1
 - Updated packages
-- Angular 19
+- Angular 19.2.5
 
 ### 2024-12-18 1.0.0
 - Updated packages
