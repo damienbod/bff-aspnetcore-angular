@@ -2,6 +2,7 @@
 
 ### 2025-08-03 1.0.2
 - Updated packages
+- Angular 20.1.4
 
 ### 2025-04-07 1.0.1
 - Updated packages
