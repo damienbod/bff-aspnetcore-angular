@@ -125,7 +125,7 @@ The development environment is setup to use the default tools for each of the te
 > Always run in HTTPS, both in development and production
 
 ```
-nx server --ssl
+nx serve --ssl
 ```
 
 ## Azure App Registration setup
@@ -273,20 +273,11 @@ nx migrate --run-migrations=migrations.json
 
 ## Links
 
-https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core
-
-https://nx.dev/getting-started/intro
-
-https://github.com/AzureAD/microsoft-identity-web
-
-https://github.com/isolutionsag/aspnet-react-bff-proxy-example
-
-https://github.com/damienbod/bff-auth0-aspnetcore-angular
-
-https://github.com/damienbod/bff-openiddict-aspnetcore-angular
-
-https://github.com/damienbod/bff-azureadb2c-aspnetcore-angular
-
-https://github.com/damienbod/bff-aspnetcore-vuejs
-
-https://github.com/damienbod/bff-MicrosoftEntraExternalID-aspnetcore-angular
+- [SonarQube Cloud - Analyzing GitHub projects](https://docs.sonarsource.com/sonarcloud/getting-started/github/)
+- [rufer7 - github-sonarcloud-integration](https://github.com/rufer7/github-sonarcloud-integration)
+- [[HOWTO] Integrate SonarCloud analysis in an Azure DevOps YAML pipeline](https://blog.rufer.be/2023/10/06/howto-integrate-sonarcloud-analysis-in-an-azure-devops-yaml-pipeline/)
+- [Sonar Community - Code coverage report for .Net not working on Linux agent](https://community.sonarsource.com/t/code-coverage-report-for-net-not-working-on-linux-agent/62087)
+- [SonarScanner for .NET - Analyzing languages other than C# and VB](https://docs.sonarsource.com/sonarcloud/advanced-setup/ci-based-analysis/sonarscanner-for-net/#analyzing-languages-other-than-c-and-vb)
+- [Andrei Epure - How to analyze JS/TS, HTML and CSS files with the Sonar Scanner for .NET](https://andreiepure.ro/2023/08/20/analyze-web-files-with-s4net.html)
+- [damienbod - bff-aspnetcore-angular](https://github.com/damienbod/bff-aspnetcore-angular)
+- [[Webinar] End-to-end security in a web application](https://community.sonarsource.com/t/webinar-end-to-end-security-in-a-web-application/115405)
