@@ -115,6 +115,17 @@ Update the outputPath for the (nx build) to deploy the production paths to the w
 > [!NOTE]  
 > When creating a new Angular nx project, it adds git files as well, delete these as this is not required.
 
+## Prerequisites
+
+Node >= v24.10.0
+
+```cmd
+npm add --global nx
+npm install @angular/cli -g latest
+npm install --force
+npm run build
+```
+
 ## Setup development
 
 The development environment is setup to use the default tools for each of the tech stacks. Angular nx is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
