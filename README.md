@@ -9,7 +9,7 @@ The ASP.NET Core project is setup to run in development and production. In produ
 > [!IMPORTANT]  
 > In production, the Angular CLI project is built into the **wwwroot** of the .NET project.
 
-![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.png)
+![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.drawio.png)
 
 Configure the YARP reverse proxy to match the Angular CLI URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular CLI developement env.
 
