@@ -162,7 +162,7 @@ npm run build
 
 The development environment is setup to use the default tools for each of the tech stacks. Angular CLI is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
 
-![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
+![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.drawio.png)
 
 > [!NOTE]  
 > Always run in HTTPS, both in development and production
