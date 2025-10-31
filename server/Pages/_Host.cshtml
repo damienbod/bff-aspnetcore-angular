@@ -32,12 +32,6 @@
         var viteScriptToUpdate = """<script type="module" src="/@vite/client"></script>""";
         source = source.Replace(viteScriptToUpdate, $"""<script type="module" src="/@vite/client" nonce="{nonce}"></script>""");
     }
-    else
-    {
-        // Angular release build does not add any nonce to the scripts, so we need to add it manually
-        // var nonceScript = $"<script nonce=\"{nonce}\" ";
-        // source = source.Replace("<script ", nonceScript);
-    }
 
     // link rel="stylesheet"
     var nonceLinkStyle = $"<link nonce=\"{nonce}\" rel=\"stylesheet";
