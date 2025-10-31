@@ -83,7 +83,6 @@ else
 app.UseSecurityHeaders();
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
 app.UseNoUnauthorizedRedirect("/api");
 
@@ -102,6 +101,8 @@ if (app.Environment.IsDevelopment())
         app.MapReverseProxy();
     }
 }
+
+app.UseStaticFiles();
 
 app.MapFallbackToPage("/_Host");
 
