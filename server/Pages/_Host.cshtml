@@ -29,6 +29,8 @@
     if (hostEnvironment.IsDevelopment())
     {
         // do nothing in development, Angular > 18.1.0 adds the nonce automatically
+        var viteScriptToUpdate = """<script type="module" src="/@vite/client"></script>""";
+        source = source.Replace(viteScriptToUpdate, $"""<script type="module" src="/@vite/client" nonce="{nonce}"></script>""");
     }
     else
     {
