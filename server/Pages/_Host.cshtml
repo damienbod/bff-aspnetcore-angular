@@ -35,8 +35,8 @@
     else
     {
         // Angular release build does not add any nonce to the scripts, so we need to add it manually
-        var nonceScript = $"<script nonce=\"{nonce}\" ";
-        source = source.Replace("<script ", nonceScript);
+        // var nonceScript = $"<script nonce=\"{nonce}\" ";
+        // source = source.Replace("<script ", nonceScript);
     }
 
     // link rel="stylesheet"
