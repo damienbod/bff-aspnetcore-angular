@@ -29,12 +29,8 @@
     if (hostEnvironment.IsDevelopment())
     {
         // do nothing in development, Angular > 18.1.0 adds the nonce automatically
-    }
-    else
-    {
-        // Angular release build does not add any nonce to the scripts, so we need to add it manually
-        var nonceScript = $"<script nonce=\"{nonce}\" ";
-        source = source.Replace("<script ", nonceScript);
+        var viteScriptToUpdate = """<script type="module" src="/@vite/client"></script>""";
+        source = source.Replace(viteScriptToUpdate, $"""<script type="module" src="/@vite/client" nonce="{nonce}"></script>""");
     }
 
     // link rel="stylesheet"

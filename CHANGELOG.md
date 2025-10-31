@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2025-10-31 1.0.3
+- Switch to Angular CLI and vite
+- Angular 20.3.0
+- 
 ### 2025-08-03 1.0.2
 - Updated packages
 - Angular 20.1.4

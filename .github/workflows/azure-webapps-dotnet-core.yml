@@ -41,7 +41,7 @@ jobs:
         working-directory: ui
         run: npm install --force
 
-      - name: ui-nx-build
+      - name: ui-angular-cli-build
         working-directory: ui
         run: npm run build
 
