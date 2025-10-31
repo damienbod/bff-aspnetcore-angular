@@ -11,12 +11,17 @@ var services = builder.Services;
 var configuration = builder.Configuration;
 
 services.AddSecurityHeaderPolicies()
-  .SetPolicySelector((PolicySelectorContext ctx) =>
-  {
-      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(
+    .SetPolicySelector(ctx =>
+    {
+        if (ctx.HttpContext.Request.Path.StartsWithSegments("/api"))
+        {
+            return ApiSecurityHeadersDefinitions.GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
+        }
+
+        return SecurityHeadersDefinitions.GetHeaderPolicyCollection(
           builder.Environment.IsDevelopment(),
           configuration["MicrosoftEntraID:Instance"]);
-  });
+    });
 
 services.AddScoped<MsGraphService>();
 services.AddScoped<CaeClaimsChallengeService>();
