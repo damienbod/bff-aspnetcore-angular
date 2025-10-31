@@ -310,6 +310,7 @@ deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 
 ```
 npm install -g @angular/cli latest
+
 ng update
 
 ng update @angular/cli @angular/core
