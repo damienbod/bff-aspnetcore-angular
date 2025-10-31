@@ -1,4 +1,4 @@
-# BFF security architecture using ASP.NET Core and nx Angular standalone
+# BFF security architecture using ASP.NET Core and Angular CLI
 
 [![.NET and npm build](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/dotnet.yml) [![Build and deploy to Azure Web App](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg?branch=deploy)](https://github.com/damienbod/bff-aspnetcore-angular/actions/workflows/azure-webapps-dotnet-core.yml) [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/LICENSE)
 
@@ -7,23 +7,53 @@
 The ASP.NET Core project is setup to run in development and production. In production, it uses the Angular production build deployed to the wwwroot. In development, it uses MS YARP reverse proxy to forward requests.
 
 > [!IMPORTANT]  
-> In production, the Angular nx project is built into the **wwwroot** of the .NET project.
+> In production, the Angular CLI project is built into the **wwwroot** of the .NET project.
 
 ![BFF production](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-production_01.png)
 
-Configure the YARP reverse proxy to match the Angular nx URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular nx developement env.
+Configure the YARP reverse proxy to match the Angular CLI URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular CLI developement env.
 
 > [!IMPORTANT]  
 > In a real Angular project, the additional dev routes need to be added so that the __dev refresh__ works!
 
 ```json
  "UiDevServerUrl": "https://localhost:4201",
- "ReverseProxy": {
+"ReverseProxy": {
     "Routes": {
       "assets": {
         "ClusterId": "cluster1",
         "Match": {
           "Path": "assets/{**catch-all}"
+        }
+      },
+      "angularfsdev": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "@fs/{**catch-all}"
+        }
+      },
+      "angularngdev": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "@ng/{**catch-all}"
+        }
+      },
+      "vitedev": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "@vite/{**catch-all}"
+        }
+      },
+      "wssvite": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "/",
+          "QueryParameters": [
+            {
+              "Name": "token",
+              "Mode": "Exists"
+            }
+          ]
         }
       },
       "routealljs": {
@@ -42,12 +72,6 @@ Configure the YARP reverse proxy to match the Angular nx URL. This is only requi
         "ClusterId": "cluster1",
         "Match": {
           "Path": "/src_{nomatterwhat}_ts.js"
-        }
-      },
-      "signalr": {
-        "ClusterId": "cluster1",
-        "Match": {
-          "Path": "/ng-cli-ws"
         }
       },
       "webpacknodesrcmap": {
@@ -74,53 +98,61 @@ Configure the YARP reverse proxy to match the Angular nx URL. This is only requi
   }
 ```
 
-## Setup Angular nx
+## Setup Angular CLI
 
-Add the certificates to the nx project for example in the **/certs** folder
+Add the certificates to the CLI project for example in the **/certs** folder
 
-Update the nx project.json file:
+Update the Angular CLI angular.json file:
 
 ```json
 "serve": {
-    "executor": "@angular-devkit/build-angular:dev-server",
-    "options": {
-    "browserTarget": "ui:build",
-    "sslKey": "certs/dev_localhost.key",
-    "sslCert": "certs/dev_localhost.pem",
-    "port": 4201
-},
+          "builder": "@angular/build:dev-server",
+		  "options": {
+			"sslKey": "certs/dev_localhost.key",
+			"sslCert": "certs/dev_localhost.pem",
+			"port": 4201,
+		  },
 ```
 
 > [!NOTE]  
 > The default Angular setup uses port 4200, this needs to match the YARP reverse proxy settings for development.
 
-Update the outputPath for the (nx build) to deploy the production paths to the wwwroot of the .NET project
+Update the outputPath for the (angular cli build) to deploy the production paths to the wwwroot of the .NET project
 
 ```
- "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "../server/wwwroot",
-        "index": "./src/index.html",
-        "main": "./src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "./tsconfig.app.json",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.scss"],
-        "scripts": []
-      },
+"architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+			"outputPath": {
+              "base": "../server/wwwroot",
+              "browser": ""
+            },
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+          },
 ```
 
 > [!NOTE]  
-> When creating a new Angular nx project, it adds git files as well, delete these as this is not required.
+> When creating a new Angular CLI project, it adds git files as well, delete these as this is not required.
 
 ## Prerequisites
 
 Node >= v24.10.0
 
 ```cmd
-npm add --global nx
 npm install @angular/cli -g latest
 npm install --force
 npm run build
@@ -128,7 +160,7 @@ npm run build
 
 ## Setup development
 
-The development environment is setup to use the default tools for each of the tech stacks. Angular nx is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
+The development environment is setup to use the default tools for each of the tech stacks. Angular CLI is used like recommended. I use Visual Studio code. A YARP reverse proxy is used to integrate the Angular development into the backend application.
 
 ![BFF development](https://github.com/damienbod/bff-aspnetcore-angular/blob/main/images/bff-arch-development_01.png)
 
@@ -136,7 +168,7 @@ The development environment is setup to use the default tools for each of the te
 > Always run in HTTPS, both in development and production
 
 ```
-nx serve --ssl
+ng serve --ssl
 ```
 
 ## Azure App Registration setup
@@ -205,7 +237,7 @@ The client secret or client certificate needs to be setup, see Microsoft Entra I
 Start the Angular project from the **ui** folder
 
 ```
-nx serve --ssl
+ng serve --ssl
 ```
 
 Start the ASP.NET Core project from the **server** folder
@@ -218,7 +250,7 @@ Or just open Visual Studio and run the solution.
 
 ## github actions build
 
-Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Angular nx project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
+Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Angular CLI project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
 
 ```yaml
 
@@ -236,20 +268,20 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
       - name: Restore dependencies
         run: dotnet restore
 
       - name: npm setup
         working-directory: ui
-        run: npm install
+        run: npm install --force
 
-      - name: ui-nx-build
+      - name: ui-angular-cli-build
         working-directory: ui
         run: npm run build
 
@@ -257,6 +289,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal
+
 ```
 
 ## github actions Azure deployment
@@ -271,15 +304,15 @@ deployment test server: https://bff-angular-aspnetcore.azurewebsites.net
 - Yarp.ReverseProxy
 - Microsoft.Identity.Web
 - ASP.NET Core
-- Angular 
-- Nx
+- Angular, Angular CLI
 
-## Angular nx Updates
+## Angular CLI Updates
 
 ```
-nx migrate latest
+npm install -g @angular/cli latest
+ng update
 
-nx migrate --run-migrations=migrations.json
+ng update @angular/cli @angular/core
 ```
 
 ## Links
