@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { getCookie } from './getCookie';
 
 interface Claim {
   type: string;
@@ -31,6 +32,10 @@ export class HomeComponent implements OnInit {
     this.getUserProfile();
   }
 
+  getXsrfToken(): string {
+    return getCookie('XSRF-RequestToken');
+  }
+
   getUserProfile() {
     this.userProfileClaims$ = this.httpClient.get<UserProfile>(
       `${this.getCurrentHost()}/api/User`
@@ -50,8 +55,8 @@ export class HomeComponent implements OnInit {
   }
 
   private getCurrentHost() {
-    const host = window.location.host;
-    const url = `${window.location.protocol}//${host}`;
+    const host = globalThis.location.host;
+    const url = `${globalThis.location.protocol}//${host}`;
 
     return url;
   }

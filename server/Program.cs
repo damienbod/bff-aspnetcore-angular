@@ -7,6 +7,8 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
     serverOptions.AddServerHeader = false;
 });
 
+builder.Services.AddOpenApi();
+
 var services = builder.Services;
 var configuration = builder.Configuration;
 
@@ -49,8 +51,8 @@ services.AddMicrosoftIdentityWebAppAuthentication(configuration, "MicrosoftEntra
 // If you use persistent cache, you do not require this.
 // You can also return the 403 with the required scopes, this needs special handling for ajax calls
 // The check is only for single scopes
-services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme, 
-    options =>  options.Events = new RejectSessionCookieWhenAccountNotInCacheEvents(initialScopes));
+services.Configure<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme,
+    options => options.Events = new RejectSessionCookieWhenAccountNotInCacheEvents(initialScopes));
 
 services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
@@ -74,6 +76,7 @@ if (app.Environment.IsDevelopment())
 
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
+    app.MapOpenApi();
 }
 else
 {

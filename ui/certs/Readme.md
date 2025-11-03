@@ -8,7 +8,14 @@
 1. Update the `ui\angular.json` file to point to the certificate files:
 
    ```json
-   "sslKey": "certs/dev_localhost.key",
-   "sslCert": "certs/dev_localhost.pem",
-   "port": 4201
+   ...
+   "serve": {
+     "builder": "@angular/build:dev-server",
+     "options": {
+       "sslKey": "certs/dev_localhost.key",
+       "sslCert": "certs/dev_localhost.pem",
+       "port": 4201
+       }
+   }
+   ...
    ```
