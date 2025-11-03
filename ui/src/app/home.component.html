@@ -1,29 +1,83 @@
-<h2>BFF Security architecture with Angular CLI</h2>
-
-@if (userProfileClaims$ | async; as userProfileClaims) {
-  @if (userProfileClaims?.isAuthenticated) {
-    <div>
-      <button (click)="getDirectApiData()">get data from API direct</button>
-      <button (click)="getGraphApiDataUsingApi()">
-        get Graph data using API
-      </button>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">UI</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      @if (userProfileClaims$ | async; as userProfileClaims) { @if
+      (userProfileClaims?.isAuthenticated) {
       <form method="post" action="api/Account/Logout">
-        <button class="btn btn-link" type="submit">Sign out</button>
+        <button class="btn btn-outline btn-danger" type="submit">Sign out</button>
+        <input
+          type="hidden"
+          id="__RequestVerificationToken"
+          name="__RequestVerificationToken"
+          [value]="getXsrfToken()"
+        />
       </form>
+      } @else {
+      <a class="btn btn-outline-success btn-outline" href="api/Account/Login">Log in</a>
+      }}
     </div>
-  } @else {
-    <a class="btn btn-link" href="api/Account/Login">Log in</a>
-  }
-  <hr />
-  <h2>User profile:</h2>
-  <pre>{{ userProfileClaims | json }}</pre>
-  <hr />
-  <h2>get direct data using API:</h2>
-  <pre>{{ dataFromAzureProtectedApi$ | async | json }}</pre>
-  <hr />
-  <h2>get Microsoft Graph data using API:</h2>
-  <pre>{{ dataGraphApiCalls$ | async | json }}</pre>
-} @else {
-  <a class="btn btn-link" href="api/Account/Login">Log in</a>
-}
+  </div>
+</nav>
 
+<div class="display-4 pb-4">BFF Security Architecture with Angular CLI</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-sm-4 mb-3 mb-sm-0">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">User Profile</h5>
+        <pre class="card-text"
+          >{{ userProfileClaims$ | async | json }}
+        </pre>
+        <a href="/.well-known/security.txt" class="btn btn-primary">Security TXT</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3 mb-sm-0">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Direct data using API</h5>
+        <pre
+          >{{ dataFromAzureProtectedApi$ | async | json }}
+        </pre>
+        @if (userProfileClaims$ | async; as userProfileClaims) { @if
+        (userProfileClaims?.isAuthenticated) {
+        <button type="button" class="btn btn-primary" (click)="getDirectApiData()">
+          Get direct data using API
+        </button>
+        }}
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3 mb-sm-0">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Microsoft Graph data using API</h5>
+        <pre class="card-text"
+          >{{ dataGraphApiCalls$ | async | json }}
+        </pre>
+        @if (userProfileClaims$ | async; as userProfileClaims) { @if
+        (userProfileClaims?.isAuthenticated) {
+        <button type="button" class="btn btn-primary" (click)="getGraphApiDataUsingApi()">
+          Get Graph data using API
+        </button>
+        }}
+      </div>
+    </div>
+  </div>
+</div>
