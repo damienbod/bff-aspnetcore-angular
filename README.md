@@ -17,8 +17,9 @@ Configure the YARP reverse proxy to match the Angular CLI URL. This is only requ
 > In a real Angular project, the additional dev routes need to be added so that the **dev refresh** works!
 
 ```json
- "UiDevServerUrl": "https://localhost:4201",
-"ReverseProxy": {
+{
+  "UiDevServerUrl": "https://localhost:4201",
+  "ReverseProxy": {
     "Routes": {
       "assets": {
         "ClusterId": "cluster1",
@@ -84,9 +85,7 @@ Configure the YARP reverse proxy to match the Angular CLI URL. This is only requ
     "Clusters": {
       "cluster1": {
         "HttpClient": {
-          "SslProtocols": [
-            "Tls12"
-          ]
+          "SslProtocols": ["Tls12"]
         },
         "Destinations": {
           "cluster1/destination1": {
@@ -96,6 +95,7 @@ Configure the YARP reverse proxy to match the Angular CLI URL. This is only requ
       }
     }
   }
+}
 ```
 
 ## Setup Angular CLI
