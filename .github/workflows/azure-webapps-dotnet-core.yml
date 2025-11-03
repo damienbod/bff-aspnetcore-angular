@@ -1,14 +1,13 @@
-
 name: Build and deploy to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: bff-angular-aspnetcore    # set this to the name of your Azure Web App
-  AZURE_WEBAPP_PACKAGE_PATH: '.'               # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '9.0'                        # set this to the .NET Core version to use
+  AZURE_WEBAPP_NAME: bff-angular-aspnetcore # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: "." # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: "9.0" # set this to the .NET Core version to use
 
 on:
   push:
-    branches: [ "deploy" ]
+    branches: ["deploy"]
   workflow_dispatch:
 
 permissions:
@@ -56,6 +55,7 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+          include-hidden-files: true # otherwise .well-known folder is not included
 
   deploy:
     permissions:
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Development'
+      name: "Development"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
