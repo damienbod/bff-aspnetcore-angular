@@ -80,6 +80,12 @@ Configure the YARP reverse proxy to match the Angular CLI URL. This is only requ
         "Match": {
           "Path": "/{nomatterwhat}.js.map"
         }
+      },
+      "wellknown": {
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": ".well-known/{**catch-all}"
+        }
       }
     },
     "Clusters": {
