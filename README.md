@@ -14,7 +14,7 @@ The ASP.NET Core project is setup to run in development and production. In produ
 Configure the YARP reverse proxy to match the Angular CLI URL. This is only required in development. I always use HTTPS in development and the port needs to match the Angular CLI developement env.
 
 > [!IMPORTANT]  
-> In a real Angular project, the additional dev routes need to be added so that the __dev refresh__ works!
+> In a real Angular project, the additional dev routes need to be added so that the **dev refresh** works!
 
 ```json
  "UiDevServerUrl": "https://localhost:4201",
@@ -100,38 +100,39 @@ Configure the YARP reverse proxy to match the Angular CLI URL. This is only requ
 
 ## Setup Angular CLI
 
-Add the certificates to the CLI project for example in the **/certs** folder
+Add the certificates to the CLI project for example in the **/certs** folder.
 
-Update the Angular CLI angular.json file:
+Update the Angular CLI `angular.json` file:
 
 ```json
+...
 "serve": {
-          "builder": "@angular/build:dev-server",
-		  "options": {
-			"sslKey": "certs/dev_localhost.key",
-			"sslCert": "certs/dev_localhost.pem",
-			"port": 4201,
-		  },
+  "builder": "@angular/build:dev-server",
+  "options": {
+    "sslKey": "certs/dev_localhost.key",
+    "sslCert": "certs/dev_localhost.pem",
+    "port": 4201
+    }
+}
+...
 ```
 
 > [!NOTE]  
 > The default Angular setup uses port 4200, this needs to match the YARP reverse proxy settings for development.
 
-Update the outputPath for the (angular cli build) to deploy the production paths to the wwwroot of the .NET project
+Update the `outputPath` for the (Angular CLI build) to deploy the production paths to the `wwwroot` of the .NET project
 
 ```
-"architect": {
+      "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-			"outputPath": {
+            "outputPath": {
               "base": "../server/wwwroot",
               "browser": ""
             },
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -139,9 +140,7 @@ Update the outputPath for the (angular cli build) to deploy the production paths
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
 ```
 
@@ -219,7 +218,7 @@ Add the Azure App registration settings to the **appsettings.Development.json** 
 },
 ```
 
-App Service (linux plan) configuration 
+App Service (linux plan) configuration
 
 ```
 MicrosoftEntraID__Instance               --your-value--
@@ -253,24 +252,22 @@ Or just open Visual Studio and run the solution.
 Github actions is used for the DevOps. The build pipeline builds both the .NET project and the Angular CLI project using npm. The two projects are built in the same step because the UI project is built into the wwwroot of the server project.
 
 ```yaml
-
 name: .NET and npm build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 9.0.x
 
@@ -289,7 +286,6 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal
-
 ```
 
 ## github actions Azure deployment
