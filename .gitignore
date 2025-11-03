@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# wwwroot (as it gets recreated on every npm run build)
+**/wwwroot/*
