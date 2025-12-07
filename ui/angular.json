@@ -18,7 +18,10 @@
               "browser": ""
             },
             "browser": "src/main.ts",
-            "polyfills": ["zone.js", "@angular/localize/init"],
+            "polyfills": [
+              "zone.js",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -26,7 +29,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.css"]
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -75,7 +81,11 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing", "@angular/localize/init"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

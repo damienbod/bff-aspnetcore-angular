@@ -1,4 +1,4 @@
 Contact: mailto:test@example.com
 Expires: 2026-12-31T22:59:00.000Z
 
-For more details about security.txt, see https://securitytxt.org
+For more details about security.txt, see https://securitytxt.org/
