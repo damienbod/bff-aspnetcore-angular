@@ -38,6 +38,9 @@
     source = source.Replace("<link rel=\"stylesheet", nonceLinkStyle);
     source = source.Replace("<link rel=\"modulepreload", nonceLinkStyle);
 
+    var nonceLinkSrc = $"<link nonce=\"{nonce}\" rel=\"text\\javascript";
+    source = source.Replace("<link rel=\"modulepreload", nonceLinkSrc);
+
     var xsrf = antiForgery.GetAndStoreTokens(HttpContext);
     var requestToken = xsrf.RequestToken;
 
