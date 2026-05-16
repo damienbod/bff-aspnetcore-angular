@@ -3,6 +3,7 @@
 ### 2026-05-16 2.0.4
 - Updated .NET packages
 - Fix nonce in module
+- Update Angular packages
 
 ### 2026-03-14 2.0.3
 - Updated .NET packages
