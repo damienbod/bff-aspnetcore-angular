@@ -1,5 +1,9 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2026-05-16 2.0.4
+- Updated .NET packages
+- Fix nonce in module
+
 ### 2026-03-14 2.0.3
 - Updated .NET packages
 - Fix missing nonce in module preload
