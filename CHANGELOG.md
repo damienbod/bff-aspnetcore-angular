@@ -1,5 +1,8 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2026-10-18 2.0.7
+- Updated .NET & Angular packages
+
 ### 2026-09-29 2.0.5
 - Updated .NET packages
 
