@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { ApplicationConfig, CSP_NONCE } from '@angular/core';
 import { secureApiInterceptor } from './secure-api.interceptor';
 
@@ -15,7 +15,7 @@ const nonce = (
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-    provideHttpClient(withInterceptors([secureApiInterceptor])),
+    provideHttpClient(withXhr(), withInterceptors([secureApiInterceptor])),
     {
       provide: CSP_NONCE,
       useValue: nonce,

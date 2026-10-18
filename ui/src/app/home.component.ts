@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { getCookie } from './getCookie';
 
@@ -19,6 +19,7 @@ interface UserProfile {
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [CommonModule]
 })
 export class HomeComponent implements OnInit {

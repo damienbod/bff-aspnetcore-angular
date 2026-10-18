@@ -7,7 +7,7 @@ export function secureApiInterceptor(
 ) {
   const secureRoutes = [getApiUrl()];
 
-  if (!secureRoutes.find((x) => request.url.startsWith(x))) {
+  if (!secureRoutes.some((x) => request.url.startsWith(x))) {
     return next(request);
   }
 
