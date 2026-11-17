@@ -1,5 +1,10 @@
 ## ASP.NET Core, Angular BFF using Microsoft Entra ID Changelog
 
+### 2026-11-17 2.1.0
+- .NET 11
+- Update Angular UI packages
+- Fix bootstrap js loading bug
+
 ### 2026-10-18 2.0.7
 - Updated .NET & Angular packages
 
