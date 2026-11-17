@@ -2,8 +2,8 @@
 
 ### 2026-11-17 2.1.0
 - .NET 11
-- Update Angular UI
-- Fix bootstrap js loadin bug
+- Update Angular UI packages
+- Fix bootstrap js loading bug
 
 ### 2026-10-18 2.0.7
 - Updated .NET & Angular packages
