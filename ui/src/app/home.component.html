@@ -14,20 +14,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-      @if (userProfileClaims$ | async; as userProfileClaims) { @if
-      (userProfileClaims?.isAuthenticated) {
-      <form method="post" action="api/Account/Logout">
-        <button class="btn btn-outline btn-danger" type="submit">Sign out</button>
-        <input
-          type="hidden"
-          id="__RequestVerificationToken"
-          name="__RequestVerificationToken"
-          [value]="getXsrfToken()"
-        />
-      </form>
-      } @else {
-      <a class="btn btn-outline-success btn-outline" href="api/Account/Login">Log in</a>
-      }}
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          @if (userProfileClaims$ | async; as userProfileClaims) { @if
+          (userProfileClaims?.isAuthenticated) {
+          <form method="post" action="api/Account/Logout" class="d-inline">
+            <button class="btn btn-outline btn-danger" type="submit">Sign out</button>
+            <input
+              type="hidden"
+              id="__RequestVerificationToken"
+              name="__RequestVerificationToken"
+              [value]="getXsrfToken()"
+            />
+          </form>
+          } @else {
+          <a class="btn btn-outline-success btn-outline" href="api/Account/Login">Log in</a>
+          }}
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
